@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhqpt1cgugjpe"]
+
+[ext_resource type="FontFile" uid="uid://ddj20rhvcbny3" path="res://JMH Typewriter.ttf" id="1_4y3ci"]
+
+[node name="ConsoleText" type="Label"]
+theme_override_colors/font_color = Color(0.0365563, 0.0365563, 0.0365563, 1)
+theme_override_fonts/font = ExtResource("1_4y3ci")
+theme_override_font_sizes/font_size = 40
+autowrap_mode = 3

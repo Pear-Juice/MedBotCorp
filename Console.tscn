@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://6u7mc3jw18g4"]
+
+[ext_resource type="Script" path="res://Console.gd" id="1_2b5pw"]
+[ext_resource type="PackedScene" uid="uid://dhqpt1cgugjpe" path="res://ConsoleText.tscn" id="2_fo47i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mqof"]
+size = Vector2(818, 874)
+
+[node name="Console" type="Node2D" node_paths=PackedStringArray("scroll_container", "list_box")]
+script = ExtResource("1_2b5pw")
+scroll_container = NodePath("ScrollContainer")
+console_text = ExtResource("2_fo47i")
+list_box = NodePath("ScrollContainer/MarginContainer/VBoxContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+offset_top = 66.0
+offset_right = 818.0
+offset_bottom = 939.0
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(409, 507)
+shape = SubResource("RectangleShape2D_3mqof")

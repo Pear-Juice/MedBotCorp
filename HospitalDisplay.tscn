@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3jtbkhss1yho"]
+
+[ext_resource type="Script" path="res://HospitalDisplay.gd" id="1_pljx2"]
+[ext_resource type="FontFile" uid="uid://ddj20rhvcbny3" path="res://JMH Typewriter.ttf" id="2_lk24l"]
+
+[node name="HospitalDisplay" type="Node2D" node_paths=PackedStringArray("crisis_label", "near_crisis_label", "saved_label")]
+scale = Vector2(0.25, 0.25)
+script = ExtResource("1_pljx2")
+crisis_label = NodePath("Crisis")
+near_crisis_label = NodePath("Near Crisis")
+saved_label = NodePath("Saved")
+
+[node name="Crisis" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+theme_override_fonts/font = ExtResource("2_lk24l")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="Near Crisis" type="Label" parent="."]
+offset_top = 60.0
+offset_right = 40.0
+offset_bottom = 115.0
+theme_override_colors/font_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+theme_override_fonts/font = ExtResource("2_lk24l")
+theme_override_font_sizes/font_size = 40
+text = "0"
+
+[node name="Saved" type="Label" parent="."]
+offset_top = 120.0
+offset_right = 40.0
+offset_bottom = 175.0
+theme_override_colors/font_color = Color(0.0352941, 0.0352941, 0.0352941, 1)
+theme_override_fonts/font = ExtResource("2_lk24l")
+theme_override_font_sizes/font_size = 40
+text = "0"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1hqsnw2h06o6"]
+
+[ext_resource type="Script" path="res://Conveyor.gd" id="1_hg8av"]
+
+[node name="Conveyor" type="Node2D" node_paths=PackedStringArray("spawn_point", "slot")]
+script = ExtResource("1_hg8av")
+spawn_point = NodePath("Spawn Point")
+slot = NodePath("Slot")
+
+[node name="Spawn Point" type="Node2D" parent="."]
+position = Vector2(0, -101)
+
+[node name="Slot" type="Node2D" parent="."]
+position = Vector2(0, 128)

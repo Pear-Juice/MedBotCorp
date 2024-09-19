@@ -1,0 +1,139 @@
+[gd_scene load_steps=15 format=3 uid="uid://rv7f7v0m5sbl"]
+
+[ext_resource type="PackedScene" uid="uid://duvbgqfd5mlvn" path="res://Robot.tscn" id="1_crpy2"]
+[ext_resource type="Script" path="res://Game.gd" id="1_nj3p5"]
+[ext_resource type="Texture2D" uid="uid://c2ptwdgwitq78" path="res://World.png" id="2_i1gdf"]
+[ext_resource type="PackedScene" uid="uid://c1hqsnw2h06o6" path="res://Conveyor.tscn" id="3_wi7qg"]
+[ext_resource type="PackedScene" uid="uid://bvfnunh84ltym" path="res://Hospital.tscn" id="5_0mcs4"]
+[ext_resource type="PackedScene" uid="uid://b53hcv72akoii" path="res://Package.tscn" id="5_6uhfh"]
+[ext_resource type="PackedScene" uid="uid://6u7mc3jw18g4" path="res://Console.tscn" id="6_k8dqy"]
+[ext_resource type="PackedScene" uid="uid://b3jtbkhss1yho" path="res://HospitalDisplay.tscn" id="7_30ew5"]
+[ext_resource type="PackedScene" uid="uid://dhqpt1cgugjpe" path="res://ConsoleText.tscn" id="9_jpnsq"]
+[ext_resource type="Texture2D" uid="uid://b27endkif7sk1" path="res://CoverSquare.png" id="10_f3y8n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayyn3"]
+size = Vector2(1309, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyhab"]
+size = Vector2(72, 1077)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tssnj"]
+size = Vector2(107, 1083)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kaxgh"]
+size = Vector2(1309, 100)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("console")]
+script = ExtResource("1_nj3p5")
+skip_intro = true
+console = NodePath("Console")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_i1gdf")
+
+[node name="Robot" parent="." instance=ExtResource("1_crpy2")]
+position = Vector2(1289, 442)
+
+[node name="Conveyor" parent="." node_paths=PackedStringArray("game") instance=ExtResource("3_wi7qg")]
+position = Vector2(1252, 261)
+game = NodePath("..")
+package_obj = ExtResource("5_6uhfh")
+
+[node name="Hospital1" parent="." node_paths=PackedStringArray("game", "console") instance=ExtResource("5_0mcs4")]
+position = Vector2(1065, 945)
+index = 1
+game = NodePath("..")
+console = NodePath("../Console")
+
+[node name="HospitalDisplay1" parent="." node_paths=PackedStringArray("hospital") instance=ExtResource("7_30ew5")]
+position = Vector2(459, 131)
+scale = Vector2(1, 1)
+hospital = NodePath("../Hospital1")
+
+[node name="Hospital2" parent="." node_paths=PackedStringArray("game", "console") instance=ExtResource("5_0mcs4")]
+position = Vector2(1435, 946)
+index = 2
+game = NodePath("..")
+console = NodePath("../Console")
+
+[node name="HospitalDisplay2" parent="." node_paths=PackedStringArray("hospital") instance=ExtResource("7_30ew5")]
+position = Vector2(532, 131)
+scale = Vector2(1, 1)
+hospital = NodePath("../Hospital2")
+
+[node name="Console" parent="." instance=ExtResource("6_k8dqy")]
+position = Vector2(57, 401)
+scale = Vector2(0.657694, 0.657694)
+
+[node name="Patients" parent="." instance=ExtResource("9_jpnsq")]
+offset_left = 75.0
+offset_top = 69.0
+offset_right = 313.0
+offset_bottom = 120.0
+text = "Patients"
+
+[node name="Crisis" parent="." instance=ExtResource("9_jpnsq")]
+offset_left = 75.0
+offset_top = 130.0
+offset_right = 313.0
+offset_bottom = 181.0
+text = "Crisis"
+
+[node name="Near Crisis" parent="." instance=ExtResource("9_jpnsq")]
+offset_left = 75.0
+offset_top = 190.0
+offset_right = 323.0
+offset_bottom = 241.0
+text = "Near Crisis"
+
+[node name="Saved" parent="." instance=ExtResource("9_jpnsq")]
+offset_left = 75.0
+offset_top = 262.0
+offset_right = 323.0
+offset_bottom = 313.0
+text = "Saved"
+
+[node name="H1" parent="." instance=ExtResource("9_jpnsq")]
+offset_left = 449.0
+offset_top = 71.0
+offset_right = 697.0
+offset_bottom = 122.0
+text = "H1"
+
+[node name="H2" parent="." instance=ExtResource("9_jpnsq")]
+offset_left = 522.0
+offset_top = 70.0
+offset_right = 770.0
+offset_bottom = 121.0
+text = "H2"
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1266.5, 1041)
+shape = SubResource("RectangleShape2D_ayyn3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1889, 540.5)
+shape = SubResource("RectangleShape2D_uyhab")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(663.5, 535.5)
+shape = SubResource("RectangleShape2D_tssnj")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1264.5, 40)
+shape = SubResource("RectangleShape2D_kaxgh")
+
+[node name="CoverSquare" type="Sprite2D" parent="."]
+z_index = 2
+position = Vector2(1253.12, 213)
+scale = Vector2(0.781529, 1)
+texture = ExtResource("10_f3y8n")
+
+[connection signal="round_started" from="." to="Conveyor" method="round_started"]
+[connection signal="accepted_package" from="Hospital1" to="Conveyor" method="package_accepted_by_hospital"]
+[connection signal="accepted_package" from="Hospital2" to="Conveyor" method="package_accepted_by_hospital"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvfnunh84ltym"]
+
+[ext_resource type="Script" path="res://Hospital.gd" id="1_b2rv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8mt22"]
+size = Vector2(45, 45)
+
+[node name="Hospital" type="Area2D" groups=["Hospital"]]
+scale = Vector2(4, 4)
+script = ExtResource("1_b2rv3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8mt22")
+
+[connection signal="body_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_exited"]

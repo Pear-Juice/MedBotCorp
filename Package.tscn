@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b53hcv72akoii"]
+
+[ext_resource type="Script" path="res://Package.gd" id="1_c7qah"]
+[ext_resource type="Texture2D" uid="uid://de2qrwwqabq2n" path="res://MedBot1.png" id="2_rw12d"]
+[ext_resource type="Texture2D" uid="uid://dcjf6p3sxjgtg" path="res://MedBot2.png" id="3_14upe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ridey"]
+
+[node name="Package" type="CharacterBody2D" node_paths=PackedStringArray("s1", "s2") groups=["Package"]]
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_c7qah")
+s1 = NodePath("1")
+s2 = NodePath("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ridey")
+
+[node name="1" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("2_rw12d")
+
+[node name="2" type="Sprite2D" parent="."]
+visible = false
+z_index = 1
+texture = ExtResource("3_14upe")
